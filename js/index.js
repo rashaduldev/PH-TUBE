@@ -1,18 +1,3 @@
-// const loadProduct=async(product)=>{
-//       fetch('https://openapi.programming-hero.com/api/videos/categories')
-//       .then(response => response.json())
-//       .then(json => console.log(json))
-//       allProducts(product);
-// }
-
-// const loadProduct=async(searchText)=>{
-//       const rea=await fetch(`https://openapi.programming-hero.com/api/videos/categories`);
-//       const data=await rea.json();
-//       const result=data.data;
-//       // allProducts(result);
-//       console.log(result);
-//   }
-
 const loadCatagory=async()=>{
       const rea=await fetch(`https://openapi.programming-hero.com/api/videos/categories`);
       const data=await rea.json();
@@ -52,10 +37,13 @@ const allProducts=product=>{
             const productDiv= document.createElement('div');
             productDiv.classList=`card my-6 bg-base-100 shadow-xl`;
             productDiv.innerHTML=`
-            <figure><img class="h-96 w-full" src="${product.thumbnail}" alt="Shoes" /></figure>
+            <figure><img class="h-80 w-full" src="${product.thumbnail}" alt="Shoes" /></figure>
             <div class="card-body">
               <h2 class="card-title">${product.title}</h2>
-              <p>${product.authors[0].profile_name}</p>
+            <div class="flex">
+            
+            <p>${product.authors[0].profile_name}</p>
+            </div>
               <p>${product.others.views} views</p>
            
              
@@ -78,3 +66,4 @@ const allProducts=product=>{
     </div>
   </div>
 </div> */}
+{/* <img class="" src="${product.authors[0].profile_picture}" alt="Shoes" />   */}
