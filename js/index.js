@@ -52,7 +52,7 @@ const allProducts=product=>{
             const productDiv= document.createElement('div');
             productDiv.classList=`card my-6 bg-base-100 shadow-xl`;
             productDiv.innerHTML=`
-            <figure><img class="" src="${product.thumbnail}" alt="Shoes" /></figure>
+            <figure><img class="h-96 w-full" src="${product.thumbnail}" alt="Shoes" /></figure>
             <div class="card-body">
               <h2 class="card-title">${product.title}</h2>
               <p>${product.authors[0].profile_name}</p>
