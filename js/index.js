@@ -54,35 +54,35 @@ const catagoryId = async (catagoryId) => {
       const productDiv = document.createElement('div');
       productDiv.classList = `card my-6 bg-base-100 shadow-xl`;
       productDiv.innerHTML = `
+      <div>
+      <div class="relative">
         <div>
-          <div class="relative">
-            <div>
-              <figure><img class="h-80 w-full rounded-md" src="${product.thumbnail}" alt="" /></figure>
+          <figure><img class="h-80 w-full rounded-md" src="${product.thumbnail}" alt="" /></figure>
+        </div>
+        <div class="absolute bottom-0 right-0 text-white bg-black">
+          <p>${product.others.posted_date}</p>
+        </div>
+      </div>
+      <div class="flex">
+        <div>
+          <img class="w-10 h-10 rounded-full mt-7 ml-3" src="${product.authors[0].profile_picture}" alt="">
+        </div>
+        <div>
+          <div class="card-body text-left">
+            <h2 class="card-title">${product.title}</h2>
+            <div class="flex items-center gap-3"> 
+              <p>${product.authors[0].profile_name}</p>
+              ${product.authors[0].verified ? `
+                <p>
+                  <i class="fa-solid fa-circle-check" style="color: #2568ef;"></i>
+                </p>
+              ` : ''}
             </div>
-            <div class="absolute bottom-0 right-0 text-white bg-black">
-              <p>${product.others.posted_date}</p>
-            </div>
-          </div>
-          <div class="flex">
-            <div>
-              <img class="w-10 h-10 rounded-full mt-7 ml-3" src="${product.authors[0].profile_picture}" alt="">
-            </div>
-            <div>
-              <div class="card-body">
-                <h2 class="card-title">${product.title}</h2>
-                <div class="flex items-center gap-3"> 
-                  <p>${product.authors[0].profile_name}</p>
-                  ${product.authors[0].verified ? `
-                    <p>
-                      <i class="fa-solid fa-circle-check" style="color: #2568ef;"></i>
-                    </p>
-                  ` : ''}
-                </div>
-                <p>${product.others.views} views</p>
-              </div>
-            </div>
+            <p>${product.others.views} views</p>
           </div>
         </div>
+      </div>
+    </div>
       `;
       productContainer.appendChild(productDiv);
     }));
