@@ -26,8 +26,35 @@ const loadCatagory=async()=>{
     // console.log(catagory);
     const response=await fetch(`https://openapi.programming-hero.com/api/videos/category/${catagoryId}`);
     const data=await response.json();
+    const dataRes=data.data;
 
-    console.log(data.data);
+    console.log(dataRes);
+
+    dataRes.forEach((product=>{
+      const productDiv= document.createElement('div');
+      productDiv.classList=`card my-6 bg-base-100 shadow-xl`;
+      productDiv.innerHTML=`
+      <div>
+      <figure><img class="h-80 w-full rounded-md" src="${product.thumbnail}" alt="Shoes" /></figure>
+  
+            <div class="flex">
+              <div>
+                <img class="w-10 h-10 rounded-full mt-7 ml-3" src="${product.authors[0].profile_picture}" alt="">
+              </div>
+              <div>
+                <div class="card-body">
+                  <h2 class="card-title">${product.title}</h2>
+                <div class="flex"> 
+                <p>${product.authors[0].profile_name}</p>
+                </div>
+                  <p>${product.others.views} views</p>
+                </div>
+              </div>
+            </div>
+    </div>
+      `
+      productContainer.appendChild(productDiv);
+    }))
   }
 
   const loadProducts=async()=>{
@@ -38,34 +65,36 @@ const loadCatagory=async()=>{
       allProducts(product);
   }
   loadProducts()
-    
-const allProducts=product=>{
-      const productContainer=document.getElementById('productContainer');
-      console.log('ok');
 
-      product.forEach(product => {
-            const productDiv= document.createElement('div');
-            productDiv.classList=`card my-6 bg-base-100 shadow-xl`;
-            productDiv.innerHTML=`
-            <div>
-            <figure><img class="h-80 w-full rounded-md" src="${product.thumbnail}" alt="Shoes" /></figure>
-        
-                  <div class="flex">
-                    <div>
-                      <img class="w-10 h-10 rounded-full mt-7 ml-3" src="${product.authors[0].profile_picture}" alt="">
+  // optional part
+    
+  const allProducts=product=>{
+    const productContainer=document.getElementById('productContainer');
+    console.log('ok');
+
+    product.forEach(product => {
+          const productDiv= document.createElement('div');
+          productDiv.classList=`card my-6 bg-base-100 shadow-xl`;
+          productDiv.innerHTML=`
+          <div>
+          <figure><img class="h-80 w-full rounded-md" src="${product.thumbnail}" alt="Shoes" /></figure>
+      
+                <div class="flex">
+                  <div>
+                    <img class="w-10 h-10 rounded-full mt-7 ml-3" src="${product.authors[0].profile_picture}" alt="">
+                  </div>
+                  <div>
+                    <div class="card-body">
+                      <h2 class="card-title">${product.title}</h2>
+                    <div class="flex"> 
+                    <p>${product.authors[0].profile_name}</p>
                     </div>
-                    <div>
-                      <div class="card-body">
-                        <h2 class="card-title">${product.title}</h2>
-                      <div class="flex"> 
-                      <p>${product.authors[0].profile_name}</p>
-                      </div>
-                        <p>${product.others.views} views</p>
-                      </div>
+                      <p>${product.others.views} views</p>
                     </div>
                   </div>
-          </div>
-            `
-            productContainer.appendChild(productDiv);
-      });
+                </div>
+        </div>
+          `
+          productContainer.appendChild(productDiv);
+    });
 }
