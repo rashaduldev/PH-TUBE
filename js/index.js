@@ -11,6 +11,7 @@ const loadCatagory=async()=>{
 
   const allCatagory=catagory=>{
       const catagoryContainer=document.getElementById('catagoryContainer');
+      // catagoryContainer.innerText='';
       catagory.forEach(catagory=>{
             const catagoryDiv=document.createElement('div');
             catagoryDiv.innerHTML=`
@@ -27,6 +28,9 @@ const loadCatagory=async()=>{
     const response=await fetch(`https://openapi.programming-hero.com/api/videos/category/${catagoryId}`);
     const data=await response.json();
     const dataRes=data.data;
+    // catagoryContainer.innerText='';
+    const productContainer=document.getElementById('productContainer');
+    productContainer.innerText="";
 
     console.log(dataRes);
 
@@ -44,8 +48,9 @@ const loadCatagory=async()=>{
               <div>
                 <div class="card-body">
                   <h2 class="card-title">${product.title}</h2>
-                <div class="flex"> 
+                <div class="flex items-center gap-3"> 
                 <p>${product.authors[0].profile_name}</p>
+                <i class="fa-solid fa-circle-check" style="color: #2568ef;"></i>
                 </div>
                   <p>${product.others.views} views</p>
                 </div>
@@ -65,36 +70,6 @@ const loadCatagory=async()=>{
       allProducts(product);
   }
   loadProducts()
+  catagoryId("1000")
 
   // optional part
-    
-  const allProducts=product=>{
-    const productContainer=document.getElementById('productContainer');
-    console.log('ok');
-
-    product.forEach(product => {
-          const productDiv= document.createElement('div');
-          productDiv.classList=`card my-6 bg-base-100 shadow-xl`;
-          productDiv.innerHTML=`
-          <div>
-          <figure><img class="h-80 w-full rounded-md" src="${product.thumbnail}" alt="Shoes" /></figure>
-      
-                <div class="flex">
-                  <div>
-                    <img class="w-10 h-10 rounded-full mt-7 ml-3" src="${product.authors[0].profile_picture}" alt="">
-                  </div>
-                  <div>
-                    <div class="card-body">
-                      <h2 class="card-title">${product.title}</h2>
-                    <div class="flex"> 
-                    <p>${product.authors[0].profile_name}</p>
-                    </div>
-                      <p>${product.others.views} views</p>
-                    </div>
-                  </div>
-                </div>
-        </div>
-          `
-          productContainer.appendChild(productDiv);
-    });
-}
