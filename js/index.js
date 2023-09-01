@@ -27,18 +27,22 @@ const catagoryId = async (catagoryId) => {
   console.log(catagoryId);
   const productContainer = document.getElementById('productContainer');
   productContainer.innerText = "";
-
+  const errorButton=document.getElementById('errorButton');
+    errorButton.innerText="";
   if (catagoryId==='1005') {
+  
     const productIMG = document.createElement('div');
     productIMG.innerHTML = `
-  <div class="grid grid-cols-1 justify-center items-center">
+  <div>
+  <div class="grid grid-cols-1 justify-center text-center items-center m-auto lg:mt-10">
   <p><img class="text-center mx-auto" src="../img/Icon.png" alt="" /></p>
-  <h2 class="text-3xl">Oops!! Sorry, There is no content here</h2>
+  <h2 class="text-3xl">Oops!! Sorry, There is no <br> content here</h2>
+  </div>
   </div>
 
     `;
-    console.log(productIMG);
-    productContainer.appendChild(productIMG);
+    errorButton.appendChild(productIMG);
+
   } else {
     const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${catagoryId}`);
     const data = await response.json();
