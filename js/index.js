@@ -79,19 +79,25 @@ const catagoryId = async (catagoryId) => {
       const productDiv = document.createElement('div');
       const views = product.others.views;
 
-      const posted_date=product.others.posted_date;
-      console.log(posted_date);
-      const { hours, minutes, seconds } = convertSecondsToTime(posted_date);
+      // const posted_date=product.others.posted_date;
+      // console.log(posted_date);
+      // const { hours, minutes, seconds } = convertSecondsToTime(posted_date);
         // functionn
-    function convertSecondsToTime(seconds) {
-      const hours = Math.floor(seconds / 3600);
-      const minutes = Math.floor((seconds % 3600) / 60);
-      const remainingSeconds = seconds % 60;
-      return { hours, minutes, seconds: remainingSeconds };
-    }
-    const lg=convertSecondsToTime(posted_date)
-    console.log(lg);
+    // function convertSecondsToTime(seconds) {
+    //   const hours = Math.floor(seconds / 3600);
+    //   const minutes = Math.floor((seconds % 3600) / 60);
+    //   const remainingSeconds = seconds % 60;
+    //   return { hours, minutes, seconds: remainingSeconds };
+    // }
+    // const lg=convertSecondsToTime(posted_date)
+    // console.log(lg);
       //
+      function timeShow(miliSeconds) {
+        const hours=Math.floor(miliSeconds/3600);
+        const remainingSeconds=miliSeconds%3600;
+        const minutes=Math.floor(remainingSeconds/60);
+        return `<div>${hours}hrs ${minutes}min ago</div>`
+      }
 
     
      
@@ -105,7 +111,7 @@ const catagoryId = async (catagoryId) => {
               <figure><img class="h-80 w-full rounded-md" src="${product.thumbnail}" alt="" /></figure>
             </div>
             <div class="absolute bottom-0 right-0 text-white bg-black">
-              <p>${lg}</p>
+              <p>${product.others.posted_date?timeShow(product.others.posted_date):""}</p>
             </div>
           </div>
           <div class="flex">
