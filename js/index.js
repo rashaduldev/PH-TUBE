@@ -3,7 +3,7 @@ const loadCatagory = async () => {
   const data = await rea.json();
   const catagory = data.data;
   // allProducts(result);
-  console.log(catagory);
+  // console.log(catagory);
   // allProducts(product);
   allCatagory(catagory);
 
@@ -38,7 +38,7 @@ const sortbyview = async () => {
 
   const products = dataRes;
 
-  console.log(products.length);
+  // console.log(products.length);
 
 
   const errorButton = document.getElementById('errorButton');
@@ -75,9 +75,9 @@ const sortbyview = async () => {
       const productDiv = document.createElement('div');
       const views = product.others.views;
 
-      function timeShow(miliSeconds) {
-        const hours = Math.floor(miliSeconds / 3600);
-        const remainingSeconds = miliSeconds % 3600;
+      function timeShow(Seconds) {
+        const hours = Math.floor(Seconds / 3600);
+        const remainingSeconds = Seconds % 3600;
         const minutes = Math.floor(remainingSeconds / 60);
         return `<div>${hours}hrs ${minutes}min ago</div>`
       }
@@ -126,7 +126,7 @@ const sortbyview = async () => {
 
 
 const catagoryId = async (catagoryId) => {
-  console.log(catagoryId);
+  // console.log(catagoryId);
   const sortButton = document.getElementById('sortButton');
 
   sortButton.setAttribute("data-sortByview", catagoryId);
@@ -139,13 +139,13 @@ const catagoryId = async (catagoryId) => {
 
 
   const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${catagoryId}`);
-    const data = await response.json();
-    const dataRes = data.data;
+  const data = await response.json();
+  const dataRes = data.data;
 
-    // Define and populate the products array within this scope
-    const products = dataRes;
+  // Define and populate the products array within this scope
+  const products = dataRes;
 
-    console.log(products);
+  // console.log(products);
 
 
   if (products.length <= 0) {
@@ -165,9 +165,9 @@ const catagoryId = async (catagoryId) => {
       const productDiv = document.createElement('div');
       const views = product.others.views;
 
-      function timeShow(miliSeconds) {
-        const hours = Math.floor(miliSeconds / 3600);
-        const remainingSeconds = miliSeconds % 3600;
+      function timeShow(Seconds) {
+        const hours = Math.floor(Seconds / 3600);
+        const remainingSeconds = Seconds % 3600;
         const minutes = Math.floor(remainingSeconds / 60);
         return `<div>${hours}hrs ${minutes}min ago</div>`
       }
