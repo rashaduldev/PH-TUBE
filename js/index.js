@@ -126,7 +126,7 @@ const sortbyview = async () => {
 
 
 const catagoryId = async (catagoryId) => {
-  // console.log(catagoryId);
+  console.log(catagoryId);
   const sortButton = document.getElementById('sortButton');
 
   sortButton.setAttribute("data-sortByview", catagoryId);
@@ -145,7 +145,7 @@ const catagoryId = async (catagoryId) => {
   // Define and populate the products array within this scope
   const products = dataRes;
 
-  // console.log(products);
+  console.log(products);
 
 
   if (products.length <= 0) {
